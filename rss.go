@@ -74,6 +74,7 @@ type RssItem struct {
 	Category    string `xml:"category,omitempty"`
 	Comments    string `xml:"comments,omitempty"`
 	Enclosure   *RssEnclosure
+	Enclosures  []*RssEnclosure
 	Guid        *RssGuid // Id used
 	PubDate     string   `xml:"pubDate,omitempty"` // created or updated
 	Source      string   `xml:"source,omitempty"`
@@ -121,6 +122,12 @@ func newRssItem(i *Item) *RssItem {
 	// Define a closure
 	if i.Enclosure != nil && i.Enclosure.Type != "" && i.Enclosure.Length != "" {
 		item.Enclosure = &RssEnclosure{Url: i.Enclosure.Url, Type: i.Enclosure.Type, Length: i.Enclosure.Length}
+	}
+
+	if len(i.Enclosures) > 0 {
+		for _, e := range i.Enclosures {
+			item.Enclosures = append(item.Enclosures, &RssEnclosure{Url: e.Url, Type: e.Type, Length: e.Length})
+		}
 	}
 
 	if i.Author != nil {

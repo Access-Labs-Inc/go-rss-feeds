@@ -66,6 +66,12 @@ var atomOutput = `<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.
     <content type="html">Don&#39;t communicate by sharing memory, share memory by communicating.</content>
     <link href="https://go-proverbs.github.io/" rel="alternate"></link>
   </entry>
+  <entry>
+    <title>RSS Feed can have multiple Enclosures</title>
+    <updated>2013-01-16T21:52:35-05:00</updated>
+    <id>tag:validator.w3.org,2013-01-16:/feed/docs/warning/DuplicateEnclosure.html</id>
+    <link href="https://validator.w3.org/feed/docs/warning/DuplicateEnclosure.html" rel="alternate"></link>
+  </entry>
 </feed>`
 
 var rssOutput = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
@@ -115,6 +121,14 @@ var rssOutput = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:
       <link>https://go-proverbs.github.io/</link>
       <description></description>
       <content:encoded><![CDATA[Don't communicate by sharing memory, share memory by communicating.]]></content:encoded>
+      <pubDate>Wed, 16 Jan 2013 21:52:35 -0500</pubDate>
+    </item>
+    <item>
+      <title>RSS Feed can have multiple Enclosures</title>
+      <link>https://validator.w3.org/feed/docs/warning/DuplicateEnclosure.html</link>
+      <description></description>
+      <enclosure url="https://validator.w3.org/feed/docs/warning/DuplicateEnclosure.html" length="123456" type="audio/mpeg"></enclosure>
+      <enclosure url="https://validator.w3.org/feed/docs/warning/DuplicateEnclosure.html" length="123456" type="image/jpg"></enclosure>
       <pubDate>Wed, 16 Jan 2013 21:52:35 -0500</pubDate>
     </item>
   </channel>
@@ -185,6 +199,12 @@ var jsonOutput = `{
       "title": "Go Proverb #1",
       "content_html": "Don't communicate by sharing memory, share memory by communicating.",
       "date_published": "2013-01-16T21:52:35-05:00"
+    },
+    {
+      "id": "",
+      "url": "https://validator.w3.org/feed/docs/warning/DuplicateEnclosure.html",
+      "title": "RSS Feed can have multiple Enclosures",
+      "date_published": "2013-01-16T21:52:35-05:00"
     }
   ]
 }`
@@ -246,7 +266,17 @@ func TestFeed(t *testing.T) {
 			Link:    &Link{Href: "https://go-proverbs.github.io/"},
 			Content: "Don't communicate by sharing memory, share memory by communicating.",
 			Created: now,
-		}}
+		},
+		{
+			Title: "RSS Feed can have multiple Enclosures",
+			Link:  &Link{Href: "https://validator.w3.org/feed/docs/warning/DuplicateEnclosure.html"},
+			Enclosures: []*Enclosure{
+				{Url: "https://validator.w3.org/feed/docs/warning/DuplicateEnclosure.html", Length: "123456", Type: "audio/mpeg"},
+				{Url: "https://validator.w3.org/feed/docs/warning/DuplicateEnclosure.html", Length: "123456", Type: "image/jpg"},
+			},
+			Created: now,
+		},
+	}
 
 	atom, err := feed.ToAtom()
 	if err != nil {

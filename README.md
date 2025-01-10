@@ -1,8 +1,8 @@
 ## gorilla/feeds
-![testing](https://github.com/gorilla/feeds/actions/workflows/test.yml/badge.svg)
+![testing](https://github.com/Access-Labs-Inc/go-rss-feeds/actions/workflows/test.yml/badge.svg)
 [![codecov](https://codecov.io/github/gorilla/feeds/branch/main/graph/badge.svg)](https://codecov.io/github/gorilla/feeds)
-[![godoc](https://godoc.org/github.com/gorilla/feeds?status.svg)](https://godoc.org/github.com/gorilla/feeds)
-[![sourcegraph](https://sourcegraph.com/github.com/gorilla/feeds/-/badge.svg)](https://sourcegraph.com/github.com/gorilla/feeds?badge)
+[![godoc](https://godoc.org/github.com/Access-Labs-Inc/go-rss-feeds?status.svg)](https://godoc.org/github.com/Access-Labs-Inc/go-rss-feeds)
+[![sourcegraph](https://sourcegraph.com/github.com/Access-Labs-Inc/go-rss-feeds/-/badge.svg)](https://sourcegraph.com/github.com/Access-Labs-Inc/go-rss-feeds?badge)
 
 ![Gorilla Logo](https://github.com/gorilla/.github/assets/53367916/d92caabf-98e0-473e-bfbf-ab554ba435e5)
 
@@ -28,7 +28,7 @@ import (
     "fmt"
     "log"
     "time"
-    "github.com/gorilla/feeds"
+    "github.com/Access-Labs-Inc/go-rss-feeds"
 )
 
 func main() {

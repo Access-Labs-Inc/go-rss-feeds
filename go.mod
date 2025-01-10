@@ -1,4 +1,4 @@
-module github.com/gorilla/feeds
+module github.com/Access-Labs-Inc/go-rss-feeds
 
 go 1.20
 

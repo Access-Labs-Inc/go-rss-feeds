@@ -36,6 +36,7 @@ type Item struct {
 	Updated     time.Time
 	Created     time.Time
 	Enclosure   *Enclosure
+	Enclosures  []*Enclosure
 	Content     string
 }
 
